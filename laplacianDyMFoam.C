@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
-    laplacianFoam
+    laplacianDyMFoam
 
 Description
     Solves a simple Laplace equation, e.g. for thermal diffusion in a solid.
