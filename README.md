@@ -12,3 +12,16 @@ https://github.com/OpenFOAM/OpenFOAM-9/tree/master/applications/solvers/basic/la
 * matrLaplacianFoam https://github.com/j-avdeev/matrLaplacianFoam
 * solidDisplacementFoamF https://github.com/j-avdeev/solidDisplacementFoamF
 * laplacianFoamF https://github.com/j-avdeev/laplacianFoamF
+
+
+### Prerequisites
+OpenFOAM 9 https://openfoam.org/
+
+### To compile
+$ wmake
+
+### To clean
+$ wclean
+
+
+
