@@ -1,0 +1,108 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 300;//300;
+
+boundaryField
+{
+    walls
+    {
+         type            fixedValue;
+         value           uniform 300;
+//          type externalWallHeatFluxTemperature;
+//          q               uniform 1000;
+//          Ta              uniform 300.0;
+//          h               uniform 10.0;
+//          thicknessLayers (0.1 0.2 0.3 0.4);
+//          kappaLayers     (1 2 3 4);
+//          value           uniform 300.0;
+//          Qr              none;
+//          relaxation      1;
+//          kappaMethod     solidThermo;//      fluidThermo;
+//          kappa       none;
+//          mode coefficient;
+    }
+
+//      inlet
+//      {
+//          type            fixedValue;
+//          value           uniform 0;
+//      }
+
+    outlet
+    {
+        type            zeroGradient;
+//         type            fixedValue;
+//         value           uniform 300;
+    }
+
+     inlet
+     {
+         type            laserConvection;
+         value           uniform 300;
+ 
+         HTCheating      150;//23;
+         HTCquenching    15000;//23;
+ 
+         TfH             1000;//300;
+         TfQ             990;//290;
+ 
+         heatingTime     3;
+ 
+         source1
+         {
+             power       350;
+             spotCenter  (0.10 0.10 0);
+             normal      (0 1 0);  //- Not used
+ 
+             sigmaX      0.0015;
+             sigmaY      0.0015;
+ 
+             correlation 0;
+ 
+              motion
+              {
+//                    mode    circle;
+//                    center  (10 10 0);
+//                    omega   10;
+//                    nCycles 5;
+                   active  true;
+   
+                   start   0.0;
+ 
+                  mode linear;
+                  points
+                  {
+                    p0  (0 0 0);
+                    p1  (0.005 0 0);
+//                     p2  (0.05 0.02 0);
+//                     p3  (0 0.02 0);
+                  }
+                  linearVelocity 0.05;
+              }
+         }
+
+
+        powerReduceName   none;
+        kName             k;
+
+         kValue          10;
+    }
+}
+
+// ************************************************************************* //
