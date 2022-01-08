@@ -13,7 +13,9 @@ rm -rf EnSight Ensight Fieldview > /dev/null 2>&1
 #find . \( -name '*.pvs' -o -name '*.OpenFOAM' \) -exec rm {} \;
 #rm -rf logs testLoopReport
 
-#rm -rf *[1-9]*
-#rm -f log.*
+foamCleanTutorials
+
+rm -rf *[1-9]*
+rm -f log.*
 
 #------------------------------------------------------------------------------

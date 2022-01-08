@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "write.H": "cpp",
+        "createFields.H": "cpp",
+        "laplacianDyMFoam.C": "cpp"
+    }
+}

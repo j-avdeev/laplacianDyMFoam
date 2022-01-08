@@ -35,6 +35,20 @@ dimensionedScalar DT
 (
     transportProperties.lookup("DT")
 );
-
+/*
+Info<< "Creating field S\n" << endl;
+volScalarField S
+(
+    IOobject
+    (
+        "S",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+*/
 #include "createFvModels.H"
 #include "createFvConstraints.H"
