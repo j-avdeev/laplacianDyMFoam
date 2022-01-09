@@ -30,7 +30,8 @@ Description
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
-#include "fvModels.H"
+//#include "fvModels.H"
+#include "dynamicFvMesh.H"
 #include "fvConstraints.H"
 #include "simpleControl.H"
 
@@ -41,8 +42,8 @@ int main(int argc, char *argv[])
     #include "setRootCaseLists.H"
 
     #include "createTime.H"
-    #include "createMesh.H"
-
+//    #include "createMesh.H"
+    #include "createDynamicFvMesh.H"
     simpleControl simple(mesh);
 
     #include "createFields.H"
@@ -55,15 +56,17 @@ int main(int argc, char *argv[])
     {
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        fvModels.correct();
+        mesh.update();
+
+//        fvModels.correct();
 
         while (simple.correctNonOrthogonal())
         {
             fvScalarMatrix TEqn
             (
                 fvm::ddt(T) - fvm::laplacian(DT, T)
-             ==
-                fvModels.source(T)
+//             ==
+//                fvModels.source(T)
             );
 
             fvConstraints.constrain(TEqn);
